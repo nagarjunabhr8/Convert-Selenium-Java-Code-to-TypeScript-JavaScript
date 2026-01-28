@@ -8,12 +8,12 @@ The system follows the **B.L.A.S.T.** protocol and uses a 3-layer architecture:
 
 ```mermaid
 graph TD
-    User[👩‍💻 User] -->|Pastes Java Code| UI[React Frontend (Vite)]
-    UI -->|POST /api/convert| API[Express Backend (Node.js)]
+    User["👩‍💻 User"] -->|Pastes Java Code| UI["React Frontend (Vite)"]
+    UI -->|POST /api/convert| API["Express Backend (Node.js)"]
     
-    subgraph "AI Link Layer"
-    API -->|Prompt + Code| LLM[Ollama (Local LLM)]
-    LLM[Ollama running 'codellama'] -->|Playwright TS Code| API
+    subgraph AI_Layer ["AI Link Layer"]
+        API -->|Prompt + Code| LLM["Ollama (Local LLM)"]
+        LLM -->|Playwright TS Code| API
     end
     
     API -->|JSON Response| UI
